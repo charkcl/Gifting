@@ -1,7 +1,31 @@
+nav.navbar{
+  font-family: 'Tillana', cursive;
+  margin-bottom: 0px;
+  background: transparent;
+}
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
+}
+.landing{
+  background: url('../img/Landing-bg.jpg') no-repeat center rgba(255,255,255,0.4);
+  background-size: cover;
+  min-height: 520px;
+  padding-top: 170px;
+  font-family: 'Tillana', cursive;
+  font-weight: 800;
+}
+
+.landing-main{
+  background-color: rgba(255,255,255,0.6);
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 130px;
+}
+
+.landing-intro{
+  font-family: 'Tillana', cursive;
 }
