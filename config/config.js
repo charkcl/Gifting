@@ -26,7 +26,7 @@ var config = {
     app: {
       name: 'gifting'
     },
-    port: process.env.PORT,
+    port: (process.env.PORT || 3000),
     db: process.env.MONGOLAB_URI
   }
 };
