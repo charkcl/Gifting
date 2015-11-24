@@ -6,28 +6,28 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'wdi-express'
+      name: 'gifting'
     },
     port: 3000,
-    db: 'mongodb://localhost/wdi-express-development'
+    db: 'mongodb://localhost/gifting-development'
   },
 
   test: {
     root: rootPath,
     app: {
-      name: 'wdi-express'
+      name: 'gifting'
     },
     port: 3000,
-    db: 'mongodb://localhost/wdi-express-test'
+    db: 'mongodb://localhost/gifting-test'
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'wdi-express'
+      name: 'gifting'
     },
-    port: 3000,
-    db: 'mongodb://localhost/wdi-express-production'
+    port: process.env.PORT,
+    db: process.env.MONGOLAB_URI
   }
 };
 
