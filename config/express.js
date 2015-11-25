@@ -33,7 +33,8 @@ module.exports = function(app, config) {
   app.use(session({
     secret: process.env.PASSPORT_SECRET || 'WDI-GENERAL-ASSEMBLY-EXPRESS',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 3600000 }
   }));
   app.use(passport.initialize());
   app.use(passport.session());
@@ -79,6 +80,11 @@ module.exports = function(app, config) {
       error: err,
       title: 'error'
     });
+  });
+
+  app.use(function (req, res, next) {
+    global.user = req.user;
+    next()
   });
 
 };
