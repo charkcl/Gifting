@@ -22,6 +22,15 @@ var API_WRAPPER = function(){
       url: this.URL_BASE + '/api/gifts/' + giftId
     })
   }
+
+  this.createGift = function(params){
+    return $.ajax({
+      method: 'POST',
+      url: this.URL_BASE + '/api/gifts',
+      data: params
+    })
+  }
+
 }
 
 var API = new API_WRAPPER;

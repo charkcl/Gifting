@@ -4,11 +4,11 @@ nav.navbar{
   margin-bottom: 0px;
   background: transparent;
   font-size: 40px;
-  height: 65px;
+  height: 70px;
 }
 
 .navbar-brand{
-  font-size: 30px
+  font-size: 35px
 }
 .navbar-right>li>a{
   padding-top: 4px;
@@ -26,7 +26,7 @@ a {
 .landing{
   background: url('../img/Landing-bg.jpg') no-repeat center rgba(255,255,255,0.4);
   background-size: cover;
-  height: 520px;
+  height: 550px;
   font-weight: 800;
   padding-top: 30px;
 }

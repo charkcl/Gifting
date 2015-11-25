@@ -32,9 +32,8 @@ module.exports = function(app, config) {
   app.use(methodOverride());
   app.use(session({
     secret: process.env.PASSPORT_SECRET || 'WDI-GENERAL-ASSEMBLY-EXPRESS',
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 3600000 }
+    resave: false,
+    saveUninitialized: false
   }));
   app.use(passport.initialize());
   app.use(passport.session());

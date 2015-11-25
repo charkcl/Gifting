@@ -3,6 +3,8 @@ var express  = require('express');
 var config   = require('./config/config');
 var glob     = require('glob');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
 
 // MongoDB Setup
 mongoose.connect(config.db);
@@ -25,4 +27,3 @@ require('./config/express')(app, config);
 app.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);
 });
-

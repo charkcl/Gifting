@@ -12,8 +12,10 @@ function authenticatedUser(req, res, next){
   // If the user is authenticated, then we continue the execution
   // Otherwise the request is always redirected to the home page
   if (req.isAuthenticated()) {
+    console.log("API authenticated")
     return next();
   } else {
+    console.log("API not authenticated")
     return res.status(401).json({message: "Please Login"});
   }
 }
@@ -37,7 +39,7 @@ router.get('/api/gifts/:id', function(req, res, next) {
 
   Gift.findById(giftId).select('-createdBy').exec(function (err,gift){
     if (err) res.status(400).json({message : err})
-    res.status(200).json({gift : gift});
+    res.json({gift : gift});
   })
 });
 
@@ -48,7 +50,7 @@ router.post("/api/gifts", authenticatedUser, function(req, res){
 
   Gift.create(giftParams, function (err, gift){
     if (err) res.status(400).json({message : err})
-    res.status(201).json({gift : gift})
+    res.status(201).json(gift)
   });
 })
 
@@ -72,7 +74,7 @@ router.put('/api/gifts/:id', authenticatedUser, function(req, res, next){
 
     gift.save(function(err){
       if (err) res.status(400).json({message : err});
-      res.status(200).json({gift : gift});
+      res.status(200).json({gift});
       })
     }
   })
