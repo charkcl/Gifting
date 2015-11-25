@@ -1,4 +1,4 @@
-<h2>Signin</h2>
+<h2 class="text-center">Sign In</h2>
 
 <% if (message.length > 0) { %>
   <div class="alert alert-danger"><%= message %></div>
@@ -15,5 +15,15 @@
     <input class="form-control" type="password" name="password" id="password">
   </div>
 
-  <input class="btn btn-default" type="submit">
+  <div class="form-group text-center">
+  <input class="btn btn-success" type="submit">
+  </div>
 </form>
+<hr>
+<div class="text-center">
+<a href="/auth/facebook"><img src="img/fblogin.png" id="fb-login"></a>
+</div>
+
+<div class="text-center">
+  <a href="/signup">Don't have an account? Sign up here!</a>
+</div>

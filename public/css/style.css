@@ -10,6 +10,7 @@ body {
 a {
   color: #00B7FF;
 }
+
 .landing{
   background: url('../img/Landing-bg.jpg') no-repeat center rgba(255,255,255,0.4);
   background-size: cover;
@@ -23,7 +24,11 @@ a {
   background-color: rgba(255,255,255,0.6);
   padding: 10px;
   border-radius: 20px;
-  margin-bottom: 130px;
+  margin-bottom: 110px;
+}
+
+#fb-login{
+  max-height: 50px;
 }
 
 .landing-intro{

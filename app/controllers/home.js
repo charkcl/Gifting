@@ -7,7 +7,7 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-  res.render('index', {
+  res.render('static/home', {
     title: 'Generator-Express MVC'
   });
 });

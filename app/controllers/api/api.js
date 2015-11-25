@@ -14,30 +14,31 @@ function authenticatedUser(req, res, next){
   if (req.isAuthenticated()) {
     return next();
   } else {
-    return res.json({message: "Please Login"});
+    return res.status(401).json({message: "Please Login"});
   }
 }
 
 router.get('/secret', authenticatedUser, function (req, res, next) {
-  res.json({message : "secret"});
+  res.status(200).json({message : "secret"});
 });
 
 // Gift-index
 router.get('/api/gifts', function(req, res, next){
-  Gift.find({}, function(err, gifts){
-    if (err) res.json({message : err})
-    res.json({gifts});
-  }).select('-createdBy')
+  Gift.find({}).select('-createdBy').exec(function(err, gifts){
+    if (err) res.status(400).json({success: false, message : err})
+
+    res.status(200).json({gifts : gifts});
+  })
 });
 
 //Gift-show
 router.get('/api/gifts/:id', function(req, res, next) {
   var giftId = req.params.id;
 
-  Gift.findById(giftId, function (err,gift){
-    if (err) res.json({message : err})
-    res.json({gift});
-  }).select('-createdBy')
+  Gift.findById(giftId).select('-createdBy').exec(function (err,gift){
+    if (err) res.status(400).json({message : err})
+    res.status(200).json({gift : gift});
+  })
 });
 
 // Gift-create
@@ -46,8 +47,8 @@ router.post("/api/gifts", authenticatedUser, function(req, res){
   giftParams.createdBy = req.user._id;
 
   Gift.create(giftParams, function (err, gift){
-    if (err) res.json({message : err})
-    res.json({gift})
+    if (err) res.status(400).json({message : err})
+    res.status(201).json({gift : gift})
   });
 })
 
@@ -55,21 +56,23 @@ router.post("/api/gifts", authenticatedUser, function(req, res){
 router.put('/api/gifts/:id', authenticatedUser, function(req, res, next){
 
   var currentUser = req.user.id;
-  var giftId = req.params.id;
+  var giftId      = req.params.id;
 
   Gift.findById(giftId, function (err , gift){
-    if (err) res.json({message : err})
+    if (err) res.status(400).json({message : err})
     if (currentUser !=  gift.createdBy){
-      res.json({message: "You are not the creator!"});
+      res.status(401).json({message: "You are not the creator!"});
     } else {
-    if (req.body.gift.name) gift.name = req.body.gift.name;
-    if (req.body.gift.shop) gift.shop = req.body.gift.shop;
-    if (req.body.gift.description) gift.description = req.body.gift.description;
-    if (req.body.gift.tags) gift.tags = req.body.gift.tags;
+    var reqGift = req.body.gift;
+
+    if (reqGift.name)          gift.name        = reqGift.name;
+    if (reqGift.shop)          gift.shop        = reqGift.shop;
+    if (reqGift.description)   gift.description = reqGift.description;
+    if (reqGift.tags)          gift.tags        = reqGift.tags;
 
     gift.save(function(err){
       if (err) res.json({message : err});
-      res.json({gift : gift});
+      res.status(200).json({gift : gift});
       })
     }
   })
@@ -81,13 +84,13 @@ router.delete('/api/gifts/:id', authenticatedUser, function(req, res, next){
   var giftId = req.params.id;
 
   Gift.findById(giftId, function (err , gift){
-    if (err) res.json({message : err})
-    if (currentUser !=  gift.createdBy){
-      res.json({message: "You are not the creator!"});
+    if (err) res.status(400).json({message : err});
+    if (currentUser != gift.createdBy){
+      res.status(401).json({message: "You are not the creator!"});
     } else {
       gift.remove(function(err){
-      if (err) res.json({message: err})
-      res.json({message: "Gift has been removed"})
+        if (err) res.json({message: err})
+        res.status(200).json({message: "Gift has been removed"});
       });
     }
   })
@@ -99,8 +102,8 @@ router.get('/api/mylist', authenticatedUser, function(req, res, next){
   var currentUser = req.user.id;
 
   List.find({user: currentUser}, function(err, lists){
-    if (err) res.json({message : err})
-    res.json({lists : lists});
+    if (err) res.status(400).json({message : err})
+    res.status(200).json({lists : lists});
   })
 });
 
@@ -112,8 +115,8 @@ router.post('/api/mylist', authenticatedUser, function(req, res){
   listParams.gift = req.params.id;
 
   List.create(listParams, function(err, list){
-    if (err) res.json({message : err})
-    res.json({list : list});
+    if (err) res.status(400).json({message : err})
+    res.status(201).json({list : list});
   })
 });
 
@@ -124,9 +127,9 @@ router.delete('/api/mylist/:id', authenticatedUser, function(req, res, next){
   var listId = req.params.id;
 
   List.findById(listId, function (err , list){
-    if (err) res.json({message : err})
-    if (currentUser !=  list.user){
-      res.json({message: "You are not authorized"});
+    if (err) res.status(400).json({message : err})
+    if (currentUser != list.user){
+      res.status(401).json({message: "You are not authorized"});
     } else {
       list.remove(function(err){
       if (err) res.json({message: err})

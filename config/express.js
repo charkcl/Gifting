@@ -82,8 +82,8 @@ module.exports = function(app, config) {
   });
 
   app.use(function (req, res, next) {
-  global.user = req.user;
-  next()
+    global.user = req.user;
+    next()
   });
 
 };
