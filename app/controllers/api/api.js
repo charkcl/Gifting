@@ -71,7 +71,7 @@ router.put('/api/gifts/:id', authenticatedUser, function(req, res, next){
     if (reqGift.tags)          gift.tags        = reqGift.tags;
 
     gift.save(function(err){
-      if (err) res.json({message : err});
+      if (err) res.status(400).json({message : err});
       res.status(200).json({gift : gift});
       })
     }
@@ -132,7 +132,7 @@ router.delete('/api/mylist/:id', authenticatedUser, function(req, res, next){
       res.status(401).json({message: "You are not authorized"});
     } else {
       list.remove(function(err){
-      if (err) res.json({message: err})
+      if (err) res.status(400).json({message: err})
       res.json({message: "Favourite has been removed"})
       });
     }
