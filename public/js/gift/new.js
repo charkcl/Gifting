@@ -15,8 +15,6 @@ $(function(){
       }
 
       API.createGift(params).then(function(gift){
-        console.log(gift);
-        debugger
         window.location.href = "/gifts/" + gift._id;
       }, function(error){
         submitted = false;

@@ -1,2 +1,34 @@
-Edit
-<%= giftId%>
+<div class="landing">
+  <div class="white-box">
+    <h3 class="text-center">Edit your gift idea!</h3>
+
+    <form id="edit-gift" method="post" action="/api/gifts/gift._id?_method=PUT">
+      <div class="form-group">
+        <label for="name" class="h5">Name</label>
+        <input id="edit-gift-name" class="form-control" type="text" name="gift[name]" value="gift[name]">
+      </div>
+
+      <div class="form-group">
+        <label for="shop" class="h5">Shop</label>
+        <input id="edit-gift-shop" class="form-control" type="text" name="gift[shop]" value="gift[shop]">
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="h5">Description</label>
+        <input id="edit-gift-description" class="form-control" type="text" name="gift[description]" value="gift[description]">
+      </div>
+
+      <div class="form-group">
+        <label for="tags" class="h5">Tags</label>
+        <input id="edit-gift-tags" class="form-control" type="text" name="gift[tags]" value="gift[tags]">
+      </div>
+
+      <div class="form-group text-center">
+      <input class="btn btn-info h2" type="submit" value="Edit">
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript" src="/js/gift/edit.js"></script>

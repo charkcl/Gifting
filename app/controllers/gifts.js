@@ -35,14 +35,13 @@ router.get('/gifts/:id', function (req, res, next) {
   res.render('gift/show', { giftId });
 });
 
-router.get('/gifts/:id/edit', function (req, res, next) {
+router.get('/gifts/:id/edit', authenticatedUser, function (req, res, next) {
   var giftId = req.params.id;
   res.render('gift/edit', { giftId });
 });
 
 router.get('/gifts/:id/delete', authenticatedUser, function (req, res, next) {
-  console.log(req.user.id);
-  console.log(req.params.id);
+
   var currentUser = req.user.id;
   var giftId = req.params.id;
 

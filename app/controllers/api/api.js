@@ -29,7 +29,7 @@ router.get('/api/gifts', function(req, res, next){
   Gift.find({}).select('-createdBy').exec(function(err, gifts){
     if (err) res.status(400).json({success: false, message : err})
 
-    res.status(200).json({gifts : gifts});
+    res.status(200).json({gifts});
   })
 });
 
@@ -39,7 +39,7 @@ router.get('/api/gifts/:id', function(req, res, next) {
 
   Gift.findById(giftId).select('-createdBy').exec(function (err,gift){
     if (err) res.status(400).json({message : err})
-    res.json({gift : gift});
+    res.json({gift});
   })
 });
 
@@ -74,7 +74,7 @@ router.put('/api/gifts/:id', authenticatedUser, function(req, res, next){
 
     gift.save(function(err){
       if (err) res.status(400).json({message : err});
-      res.status(200).json({gift});
+      res.json({gift});
       })
     }
   })

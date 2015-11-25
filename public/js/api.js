@@ -31,6 +31,23 @@ var API_WRAPPER = function(){
     })
   }
 
+  this.editGift = function(giftId, params) {
+    return $.ajax({
+      url:    this.URL_BASE + "/api/gifts/" + giftId,
+      method: "PUT",
+      data:   params
+    });
+  };
+
+  this.deleteGift = function(giftId) {
+    var settings = {
+      url:    this.URL_BASE + "/api/gifts/" + giftId,
+      method: "DELETE"
+    }
+    var request = $.ajax(settings);
+    return request;
+  };
+
 }
 
 var API = new API_WRAPPER;
