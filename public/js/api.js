@@ -8,6 +8,20 @@ var API_WRAPPER = function(){
       url: this.URL_BASE + '/secret',
     })
   };
+
+  this.getAllGifts = function(){
+    return $.ajax({
+      type: 'GET',
+      url: this.URL_BASE + '/api/gifts'
+    })
+  }
+
+  this.getOneGift = function(giftId){
+    return $.ajax({
+      type: 'GET',
+      url: this.URL_BASE + '/api/gifts/' + giftId
+    })
+  }
 }
 
 var API = new API_WRAPPER;

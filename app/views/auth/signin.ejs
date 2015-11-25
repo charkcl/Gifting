@@ -1,29 +1,33 @@
-<h2 class="text-center">Sign In</h2>
+<div class="landing">
+	<div class="white-box">
+		<h3 class="text-center">Welcome to Gifting!</h3>
 
-<% if (message.length > 0) { %>
-  <div class="alert alert-danger"><%= message %></div>
-<% } %>
+		<% if (message.length > 0) { %>
+		  <div class="alert alert-danger"><%= message %></div>
+		<% } %>
 
-<form method="post" action="/signin">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" type="text" name="email" id="email">
-  </div>
+		<form method="post" action="/signin">
+		  <div class="form-group">
+		    <label for="email" class="h4">Email</label>
+		    <input class="form-control" type="text" name="email" id="email">
+		  </div>
 
-  <div class="form-group">
-    <label for="email">Password</label>
-    <input class="form-control" type="password" name="password" id="password">
-  </div>
+		  <div class="form-group">
+		    <label for="email" class="h4">Password</label>
+		    <input class="form-control" type="password" name="password" id="password">
+		  </div>
 
-  <div class="form-group text-center">
-  <input class="btn btn-success" type="submit">
-  </div>
-</form>
-<hr>
-<div class="text-center">
-<a href="/auth/facebook"><img src="img/fblogin.png" id="fb-login"></a>
-</div>
+		  <div class="form-group text-center">
+		  <input class="btn btn-success h2" type="submit" value="Sign-in">
+		  </div>
+		</form>
+		<hr>
+		<div class="text-center">
+		<a href="/auth/facebook"><img src="img/fblogin.png" id="fb-login"></a>
+		</div>
 
-<div class="text-center">
-  <a href="/signup">Don't have an account? Sign up here!</a>
+		<div class="text-center">
+			Don't have an account? <a href="/signup">Sign up</a> here!
+		</div>
+	</div>
 </div>
