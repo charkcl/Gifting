@@ -3,7 +3,7 @@ $(function(){
 
   API.getOneGift(giftId).then(function(data){
     $('#gift-single').prepend(
-      '<div class="well"> <h2>' +
+      '<div class="gift-show-box"> <h2>' +
       data.gift.name +'</h2><h4> Shop: ' +
       data.gift.shop +'</h4><h4> Description: ' +
       data.gift.description + '</h4><h4> Tags: ' +

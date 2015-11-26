@@ -1,6 +1,6 @@
 nav.navbar{
   padding: 10px;
-  font-family: 'Tillana', cursive;
+  font-family: 'Short Stack', cursive;
   margin-bottom: 0px;
   background: transparent;
   font-size: 40px;
@@ -17,7 +17,7 @@ nav.navbar{
 body {
   padding: 0px;
 /*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-  font-family: 'Tillana', cursive;
+  font-family: 'Short Stack', cursive;
 }
 a {
   color: #00B7FF;
@@ -38,22 +38,55 @@ a {
 }
 
 .landing-main{
-  background-color: rgba(255,255,255,0.6);
+/*  color: white;*/
+  background-color: rgba(255,255,255,0.7);
   border-radius: 20px;
   padding: 10px;
   margin-top: 130px;
-  margin-bottom: 110px;
+  margin-bottom: 190px;
 }
 
 #fb-login{
   max-height: 40px;
-  margin-bottom: 10px
-}
-
-.landing-intro{
-  font-family: 'Tillana', cursive;
 }
 
 .btn.icon{
   font-size: 40px
+}
+
+.landing-new{
+  background: url('../img/landing-new.gif') no-repeat center;
+  background-size: cover;
+  height: 550px;
+  font-weight: 800;
+  padding-top: 30px;
+}
+
+.landing-login{
+  padding: 8px;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.gift-box{
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#gift-container, #list-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gift-show-box{
+  background: rgba(100,100,100,0.3);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+footer{
+  background: rgba(100,100,100,0.3);
+  margin-top: 15px;
 }

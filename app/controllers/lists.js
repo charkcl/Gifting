@@ -16,7 +16,7 @@ function authenticatedUser(req, res, next){
     return next();
   } else {
     console.log("LiSst not authenticated")
-    return res.status(401).json({message: "Please Login"});
+    return res.status(401).redirect('/signin');
   }
 }
 

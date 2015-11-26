@@ -8,8 +8,6 @@ function getLists(e){
   if (e)  e.preventDefault();
 
   var searchWord = $('#list-input').val();
-  console.log(searchWord)
-
   API.getAllLists(searchWord).then(function(lists){
     console.log(lists);
 
@@ -19,7 +17,7 @@ function getLists(e){
     //Populate list Data
     lists.forEach(function(list){
       $('#list-container').append(
-        '<div class="col-xs-6 portfolio-item well"> <h2>' +
+        '<div class="col-xs-5 portfolio-item gift-box"> <h2>' +
         list.gift.name +'</h2><h4> Quantity: ' +
         list.quantity +'</h4><h4> Recipient: ' +
         list.recipient +'</h4><a href="/mylist/' +
