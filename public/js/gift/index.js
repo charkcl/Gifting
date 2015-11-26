@@ -1,7 +1,7 @@
 $(function(){
   getGifts();
 
-  $("#section-search").on("submit", getGifts);
+  $("#gift-search").on("submit", getGifts);
 })
 
 function getGifts (e) {
@@ -9,11 +9,11 @@ function getGifts (e) {
 
   var searchWord = $('#search-input').val();
 
-  API.getAllGifts(searchWord).then(function(data){
+  API.getAllGifts(searchWord).then(function(gifts){
     //EMPTY div first
     $('#gift-container').html('');
     //POPULATE GIFT Data
-    data.gifts.forEach(function(gift){
+    gifts.forEach(function(gift){
       $('#gift-container').append(
         '<div class="col-xs-6 portfolio-item well"> <h2>' +
         gift.name +'</h2><h4> Shop: ' +

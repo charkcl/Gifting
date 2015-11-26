@@ -33,7 +33,7 @@ router.get('/api/gifts', function(req, res, next){
   Gift.find(query).select('-createdBy').exec(function(err, gifts){
     if (err) res.status(400).json({success: false, message : err})
 
-    res.status(200).json({gifts});
+    res.status(200).json(gifts);
   })
 });
 
@@ -104,13 +104,27 @@ router.delete('/api/gifts/:id', authenticatedUser, function(req, res, next){
 
 //List-get api/mylist
 router.get('/api/mylist', authenticatedUser, function(req, res, next){
-
   var currentUser = req.user.id;
 
-  List.find({user: currentUser}, function(err, lists){
+  //case-insensitive search
+  var regex = req.query.search ? new RegExp(req.query.search, "i") : null ;
+  var query = regex ? { $or: [ {name: {$regex: regex}}, {description: {$regex: regex }} ] } : {} ;
+
+  Gift.find(query).select("_id").exec(function (err, gifts){
     if (err) res.status(400).json({message : err})
-    res.status(200).json({lists : lists});
-  }).populate("gift")
+
+    if (gifts.length > 0) {
+      var giftsId = [];
+      gifts.forEach(function(gift){ giftsId.push(gift._id); });
+
+      List.find({gift: {$in: giftsId}, user: currentUser}).populate("gift").exec(function (err, lists){
+        if (err) res.status(400).json({message : err})
+        res.status(200).json(lists);
+      })
+    } else {
+      res.status(200).json(gifts);
+    }
+  })
 });
 
 //List-post api/mylist

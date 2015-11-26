@@ -48,10 +48,12 @@ var API_WRAPPER = function(){
     })
   }
 
-  this.getAllLists = function(){
+  this.getAllLists = function(searchWord){
+    var urlQuery = searchWord ? "?search=" + searchWord : "";
+
     return $.ajax({
       type : 'GET',
-      url  : this.URL_BASE + '/api/mylist'
+      url  : this.URL_BASE + '/api/mylist' + urlQuery
     })
   }
 
