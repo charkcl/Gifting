@@ -2,14 +2,14 @@ $(function(){
 
   var giftId = window.location.pathname.split("/")[2];
 
-  API.getOneGift(giftId).then(function (data){
+  API.getOneGift(giftId).then(function(data){
     $('#edit-gift-name').val(data.gift.name);
     $('#edit-gift-shop').val(data.gift.shop);
     $('#edit-gift-description').val(data.gift.description);
     $('#edit-gift-tags').val(data.gift.tags);
   }, errorHandler);
 
-  $('#edit-gift').on('submit', function (e) {
+  $('#edit-gift').on('submit', function(e){
     e.preventDefault();
 
     var params = {
@@ -21,7 +21,7 @@ $(function(){
       }
     };
 
-    API.editGift(giftId, params).then(function (data) {
+    API.editGift(giftId, params).then(function(data){
       window.location.href = "/gifts/" + data.gift._id;
     }, errorHandler
     )

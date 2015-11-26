@@ -2,8 +2,19 @@
 
 </div>
 
+<div>
+  <form id="add-list" method = "POST">
+    <input id="list-recipient" type="text" name="list[recipients]" placeholder="recipients">
+    <input id="list-quantity" type="number" name="list[quantity]" placeholder="quantity">
+    <input class="btn btn-success" type ="submit" value="Add to myList">
+  </form>
+</div>
+
 <div class="text-center">
-<a href="/gifts/new" class="btn btn-default"> Add new </a>
+  <form id="delete-gift" method = "POST">
+    <button type ="submit" class="btn btn-link icon ion-trash-a"></button>
+  <a href="/gifts/new" class="btn btn-default"> Add new </a>
+  </form>
 </div>
 
 <script type="text/javascript" src="/js/gift/show.js"></script>

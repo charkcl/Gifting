@@ -5,48 +5,70 @@ var API_WRAPPER = function(){
   this.getSecret = function(){
     return $.ajax({
       method: 'GET',
-      url: this.URL_BASE + '/secret',
+      url   : this.URL_BASE + '/secret',
     })
   };
 
-  this.getAllGifts = function(){
+  this.getAllGifts = function(searchWord){
+    var urlQuery = searchWord ? "?search=" + searchWord : "";
+
     return $.ajax({
       type: 'GET',
-      url: this.URL_BASE + '/api/gifts'
+      url : this.URL_BASE + '/api/gifts' + urlQuery,
     })
   }
 
   this.getOneGift = function(giftId){
     return $.ajax({
       type: 'GET',
-      url: this.URL_BASE + '/api/gifts/' + giftId
+      url : this.URL_BASE + '/api/gifts/' + giftId
     })
   }
 
   this.createGift = function(params){
     return $.ajax({
-      method: 'POST',
-      url: this.URL_BASE + '/api/gifts',
+      type: 'POST',
+      url   : this.URL_BASE + '/api/gifts',
       data: params
     })
   }
 
   this.editGift = function(giftId, params) {
     return $.ajax({
-      url:    this.URL_BASE + "/api/gifts/" + giftId,
-      method: "PUT",
-      data:   params
+      type : "PUT",
+      url  : this.URL_BASE + "/api/gifts/" + giftId,
+      data : params
     });
   };
 
   this.deleteGift = function(giftId) {
-    var settings = {
-      url:    this.URL_BASE + "/api/gifts/" + giftId,
-      method: "DELETE"
-    }
-    var request = $.ajax(settings);
-    return request;
-  };
+    return $.ajax({
+      type : "DELETE",
+      url  : this.URL_BASE + "/api/gifts/" + giftId
+    })
+  }
+
+  this.getAllLists = function(){
+    return $.ajax({
+      type : 'GET',
+      url  : this.URL_BASE + '/api/mylist'
+    })
+  }
+
+  this.addToList = function(params){
+    return $.ajax({
+      type : 'POST',
+      url  : this.URL_BASE + '/api/mylist',
+      data : params
+    })
+  }
+
+  this.deleteList = function(listId) {
+    return $.ajax({
+      url  : this.URL_BASE + "/api/mylist/" + listId,
+      type : "DELETE"
+    })
+  }
 
 }
 

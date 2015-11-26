@@ -53,3 +53,7 @@ a {
 .landing-intro{
   font-family: 'Tillana', cursive;
 }
+
+.btn.icon{
+  font-size: 40px
+}

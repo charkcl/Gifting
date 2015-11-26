@@ -26,7 +26,11 @@ router.get('/secret', authenticatedUser, function (req, res, next) {
 
 // Gift-index
 router.get('/api/gifts', function(req, res, next){
-  Gift.find({}).select('-createdBy').exec(function(err, gifts){
+  //case-insensitive search
+  var regex = req.query.search ? new RegExp(req.query.search, "i") : null ;
+  var query = regex ? { $or: [ {name: {$regex: regex}}, {description: {$regex: regex }} ] } : {} ;
+
+  Gift.find(query).select('-createdBy').exec(function(err, gifts){
     if (err) res.status(400).json({success: false, message : err})
 
     res.status(200).json({gifts});
@@ -106,7 +110,7 @@ router.get('/api/mylist', authenticatedUser, function(req, res, next){
   List.find({user: currentUser}, function(err, lists){
     if (err) res.status(400).json({message : err})
     res.status(200).json({lists : lists});
-  })
+  }).populate("gift")
 });
 
 //List-post api/mylist
@@ -114,7 +118,6 @@ router.post('/api/mylist', authenticatedUser, function(req, res){
 
   var listParams = req.body.list;
   listParams.user = req.user._id;
-  listParams.gift = req.params.id;
 
   List.create(listParams, function(err, list){
     if (err) res.status(400).json({message : err})
