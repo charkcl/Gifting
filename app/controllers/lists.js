@@ -15,7 +15,7 @@ function authenticatedUser(req, res, next){
     console.log("List authenticated")
     return next();
   } else {
-    console.log("LiSst not authenticated")
+    console.log("List not authenticated")
     return res.status(401).redirect('/signin');
   }
 }

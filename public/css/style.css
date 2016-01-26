@@ -4,11 +4,14 @@ nav.navbar{
   margin-bottom: 0px;
   background: transparent;
   font-size: 40px;
-  height: 70px;
 }
 
 .navbar-brand{
   font-size: 35px
+}
+
+.navbar-brand>img{
+  height: 200%;
 }
 
 .navbar-right>li>a{
@@ -24,14 +27,6 @@ a {
   color: #00B7FF;
 }
 
-.landing{
-  background: url('../img/Landing-bg.jpg') no-repeat center rgba(255,255,255,0.4);
-  background-size: cover;
-  height: 550px;
-  font-weight: 800;
-  padding-top: 30px;
-}
-
 .white-box{
   background-color: rgba(255,255,255,0.6);
   border-radius: 20px;
@@ -44,7 +39,7 @@ a {
   border-radius: 20px;
   padding: 10px;
   margin-top: 130px;
-  margin-bottom: 190px;
+  margin-bottom: 150px;
 }
 
 #fb-login{
@@ -55,6 +50,14 @@ a {
   font-size: 40px
 }
 
+.landing{
+  background: url('../img/Landing-bg.jpg') no-repeat center;
+  background-size: cover;
+  height: 550px;
+  font-weight: 800;
+  padding-top: 30px;
+}
+
 .landing-new{
   background: url('../img/landing-new.gif') no-repeat center;
   background-size: cover;
@@ -63,9 +66,21 @@ a {
   padding-top: 30px;
 }
 
-.landing-login{
-  padding: 8px;
-  background-color: rgba(0,0,0,0.6);
+.img-landing{
+  display: inline-block;
+  max-width: 60%;
+  max-height: 50px;
+  height: auto;;
+  margin-top: 10px;
+  margin-bottom: 5px
+}
+
+.landing-main>h3{
+ margin-top: 0px;
+ margin-bottom: 0px
+}
+.landing-login>a{
+ font-size: 20px
 }
 
 .gift-box{

@@ -8,7 +8,8 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "jquery": "~2.1.4",
-    "Ionicons": "ionicons#~2.0.1"
+    "jquery": "~2.2.0",
+    "Ionicons": "ionicons#~2.0.1",
+    "font-awesome": "~4.5.0"
   }
 }
