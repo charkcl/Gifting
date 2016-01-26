@@ -15,6 +15,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="nav-bar">
       <ul class="nav navbar-nav navbar-right">
+        <% if (1) { %>
         <li>
           <a href="/signup" title="Sign Up">
             <i class="fa fa-user"></i>
@@ -25,6 +26,7 @@
             <i class="fa fa-sign-in"></i>
           </a>
         </li>
+        <% } else { %>
         <li>
           <a href="/mylist" title="Your list">
             <i class="fa fa-bookmark-o"></i>
@@ -35,6 +37,7 @@
             <i class="fa fa-sign-out"></i>
           </a>
         </li>
+        <% } %>
 
       </ul>
     </div><!-- /.navbar-collapse -->
