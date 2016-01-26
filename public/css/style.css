@@ -1,6 +1,6 @@
 nav.navbar{
   padding: 10px;
-  font-family: 'Short Stack', cursive;
+  font-family: 'Flamenco', cursive;
   margin-bottom: 0px;
   background: transparent;
   font-size: 40px;
@@ -10,6 +10,7 @@ nav.navbar{
 .navbar-brand{
   font-size: 35px
 }
+
 .navbar-right>li>a{
   padding-top: 4px;
 }
@@ -87,6 +88,6 @@ a {
 }
 
 footer{
-  background: rgba(100,100,100,0.3);
-  margin-top: 15px;
+  background: rgba(186, 174, 191, 0.2);
+  margin-top: 40px;
 }
