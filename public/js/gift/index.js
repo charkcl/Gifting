@@ -15,7 +15,7 @@ function getGifts (e) {
     //POPULATE GIFT Data
     gifts.forEach(function(gift){
       $('#gift-container').append(
-        '<div class="col-sm-5 portfolio-item gift-box"> <h3>' +
+        '<div class="col-sm-5 gift-box"> <h3>' +
         gift.name +'</h3><h4> Shop: ' +
         gift.shop +'</h4><h4> Description: ' +
         gift.description + '</h4><h4> Tags: ' +

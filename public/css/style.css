@@ -22,9 +22,10 @@ body {
   padding: 0px;
 /*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   font-family: 'Short Stack', cursive;
+  color: rgba(70, 48, 87, 0.9);
 }
 a {
-  color: #00B7FF;
+  color: rgba(174, 36, 87, 1);
 }
 
 .white-box{
@@ -95,8 +96,16 @@ a {
   flex-wrap: wrap;
 }
 
+#gift-single{
+  background: url('../img/Landing-bg.jpg') no-repeat center;
+  background-size: cover;
+  height: 550px;
+  font-weight: 800;
+  padding-top: 30px;
+}
+
 .gift-show-box{
-  background: rgba(100,100,100,0.3);
+  background: rgba(255,255,255,0.6);
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
