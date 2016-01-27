@@ -8,6 +8,6 @@ module.exports = function (app) {
 
 router.get('/', function (req, res, next) {
   res.render('static/home', {
-    title: 'Homepage'
+    title: 'Homepage',
   });
 });
