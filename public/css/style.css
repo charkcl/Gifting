@@ -24,12 +24,16 @@ a.navbar-brand{
 
 body {
   padding: 0px;
-/*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-  font-family: 'Short Stack', cursive;
+  font-family: 'Rancho', cursive;
   color: rgba(70, 48, 87, 0.9);
 }
+
 a {
   color: rgba(174, 36, 87, 1);
+}
+
+h4{
+  font-family: 'Flamenco', cursive;
 }
 
 .white-box{
@@ -44,6 +48,7 @@ a {
   padding: 10px;
   margin-top: 130px;
   margin-bottom: 150px;
+  font-family: 'Flamenco', cursive;
 }
 
 #fb-login{
@@ -115,6 +120,5 @@ a {
 }
 
 footer{
-  background: rgba(186, 174, 191, 0.2);
-  margin-top: 40px;
+  background-color: white;
 }

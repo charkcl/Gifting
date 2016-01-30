@@ -21,7 +21,7 @@ function getGifts (e) {
         gift.description + '</h4><h4> Tags: ' +
         gift.tags + '</h4><a href="/gifts/' +
         gift._id +
-        '" class="btn btn-info h4"> Show </a></div>'
+        '" class="btn btn-info h4 pull-right"> Show </a></div>'
       )
     })
   }, errorHandler)

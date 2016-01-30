@@ -22,7 +22,7 @@ function getLists(e){
         list.quantity +'</h4><h4> Recipient: ' +
         list.recipient +'</h4><a href="/mylist/' +
         list._id +
-        '/delete" class="btn btn-info h4"> Delete </a></div>'
+        '/delete" class="btn btn-danger h4"> Delete  </a></div>'
       )
     })
   }, errorHandler)
