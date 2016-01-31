@@ -33,7 +33,7 @@ router.get('/mylist/:id/delete', authenticatedUser, function (req, res, next) {
   List.findById(listId, function(err, list){
     if (err) res.json({message : err});
     if (currentUser != list.user){
-      res.status(401).json({message:"LIST LOSER"})
+      res.status(401).json({message:"You are not the creator."})
     } else {
       list.remove(function(err){
         if(err) res.json({message:err})
