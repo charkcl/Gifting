@@ -1,34 +1,39 @@
 nav.navbar{
   padding: 10px;
-  font-family: 'Tillana', cursive;
+  font-family: 'Flamenco', cursive;
   margin-bottom: 0px;
   background: transparent;
   font-size: 40px;
-  height: 65px;
 }
 
-.navbar-brand{
-  font-size: 30px
+a.navbar-brand{
+  font-size: 35px;
+  padding: 15px 15px 15px 0px;
 }
+
+.navbar-brand>img{
+  display: inline-block;
+  max-width: 100%;
+  max-height: 40px;
+  height: auto;
+}
+
 .navbar-right>li>a{
   padding-top: 4px;
 }
 
 body {
   padding: 0px;
-/*  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-  font-family: 'Tillana', cursive;
-}
-a {
-  color: #00B7FF;
+  font-family: 'Rancho', cursive;
+  color: rgba(70, 48, 87, 0.9);
 }
 
-.landing{
-  background: url('../img/Landing-bg.jpg') no-repeat center rgba(255,255,255,0.4);
-  background-size: cover;
-  height: 520px;
-  font-weight: 800;
-  padding-top: 30px;
+a {
+  color: rgba(174, 36, 87, 1);
+}
+
+h4{
+  font-family: 'Flamenco', cursive;
 }
 
 .white-box{
@@ -38,18 +43,86 @@ a {
 }
 
 .landing-main{
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.7);
   border-radius: 20px;
   padding: 10px;
   margin-top: 130px;
-  margin-bottom: 110px;
+  margin-bottom: 150px;
+  font-family: 'Flamenco', cursive;
 }
 
 #fb-login{
   max-height: 40px;
-  margin-bottom: 10px
 }
 
-.landing-intro{
-  font-family: 'Tillana', cursive;
+.btn.icon{
+  font-size: 40px
+}
+
+.landing{
+  background: url('../img/Landing-bg.jpg') no-repeat center;
+  background-size: cover;
+  height: 550px;
+  font-weight: 800;
+  padding-top: 30px;
+}
+
+.landing-new{
+  background: url('../img/landing-new.gif') no-repeat center;
+  background-size: cover;
+  height: 550px;
+  font-weight: 800;
+  padding-top: 30px;
+}
+
+.img-landing{
+  display: inline-block;
+  max-width: 60%;
+  max-height: 50px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 5px
+}
+
+.landing-main>h3{
+ margin-top: 0px;
+ margin-bottom: 0px
+}
+.landing-login>a{
+ font-size: 20px
+}
+
+.gift-box{
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#gift-container, #list-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#gift-single{
+  background: url('../img/Landing-bg.jpg') no-repeat center;
+  background-size: cover;
+  height: 550px;
+  font-weight: 800;
+  padding-top: 30px;
+}
+
+.gift-show-box{
+  background: rgba(255,255,255,0.6);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+footer{
+  background-color: white;
+}
+
+.white-box label.h3{
+  margin-top:0px;
 }

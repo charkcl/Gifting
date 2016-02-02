@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var User = require('./user');
 var Schema   = mongoose.Schema;
 
 var GiftSchema = new Schema({

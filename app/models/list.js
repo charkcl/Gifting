@@ -6,7 +6,7 @@ var Schema   = mongoose.Schema;
 var ListSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   gift: { type: Schema.Types.ObjectId, ref: 'Gift' },
-  recipients: [String],
+  recipient: String,
   quantity: Number
 });
 

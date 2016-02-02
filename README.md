@@ -1,23 +1,37 @@
-# WDI-Express
+# Project#3 for WDI9 at GA-HK -Gifting
 
-Sample Express/Mongo App for WDI with the service of [yeoman](https://github.com/yeoman/yo) and [generator-express](https://github.com/petecoop/generator-express)
+## Intro
+Gifted is a platform where people can *share* their gift ideas.
 
-### Configuration
+## Gifting
 
-`/config/config.js` (server) and (Express)
+### Setup
+For this project we used the below:
+  - node.js
+  - mongodb
+  - express
+  - own api
 
-### Adding Front-End dependencies
+Libraries used and saved under `package.json`
 
+```bash
+insert libraries here
 ```
-$ bower install jquery --save
-```
 
-Don't forget to include the library in your templates, referencing the bower package in `public/components/...`
+#### Gifted Basics
+Gifted models are `Users`,`Gifts` and `Lists`.'
 
-### Running the app
+These are the basic features:
 
-Starting the app is easy:
+- Visitors
+  - View landing page
+  - View a gift idea
+  - Be able to sign in
+  - Be able to log in/out
+- Logged in User
+  - Add a gift idea
+  - Edit & update their own gift ideas
+  - Bookmark gift ideas
+    - insert recipients
 
-```
-$ gulp
-```
+[Website](https://gifting-wdi9.herokuapp.com/)

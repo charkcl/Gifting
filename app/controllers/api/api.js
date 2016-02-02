@@ -12,8 +12,10 @@ function authenticatedUser(req, res, next){
   // If the user is authenticated, then we continue the execution
   // Otherwise the request is always redirected to the home page
   if (req.isAuthenticated()) {
+    console.log("API authenticated")
     return next();
   } else {
+    console.log("API not authenticated")
     return res.status(401).json({message: "Please Login"});
   }
 }
@@ -24,10 +26,14 @@ router.get('/secret', authenticatedUser, function (req, res, next) {
 
 // Gift-index
 router.get('/api/gifts', function(req, res, next){
-  Gift.find({}).select('-createdBy').exec(function(err, gifts){
+  //case-insensitive search
+  var regex = req.query.search ? new RegExp(req.query.search, "i") : null ;
+  var query = regex ? { $or: [ {name: {$regex: regex}}, {description: {$regex: regex }} ] } : {} ;
+
+  Gift.find(query).select('-createdBy').exec(function(err, gifts){
     if (err) res.status(400).json({success: false, message : err})
 
-    res.status(200).json({gifts : gifts});
+    res.status(200).json(gifts);
   })
 });
 
@@ -37,7 +43,7 @@ router.get('/api/gifts/:id', function(req, res, next) {
 
   Gift.findById(giftId).select('-createdBy').exec(function (err,gift){
     if (err) res.status(400).json({message : err})
-    res.status(200).json({gift : gift});
+    res.json({gift});
   })
 });
 
@@ -48,7 +54,7 @@ router.post("/api/gifts", authenticatedUser, function(req, res){
 
   Gift.create(giftParams, function (err, gift){
     if (err) res.status(400).json({message : err})
-    res.status(201).json({gift : gift})
+    res.status(201).json(gift)
   });
 })
 
@@ -72,7 +78,7 @@ router.put('/api/gifts/:id', authenticatedUser, function(req, res, next){
 
     gift.save(function(err){
       if (err) res.status(400).json({message : err});
-      res.status(200).json({gift : gift});
+      res.json({gift});
       })
     }
   })
@@ -98,12 +104,26 @@ router.delete('/api/gifts/:id', authenticatedUser, function(req, res, next){
 
 //List-get api/mylist
 router.get('/api/mylist', authenticatedUser, function(req, res, next){
-
   var currentUser = req.user.id;
 
-  List.find({user: currentUser}, function(err, lists){
+  //case-insensitive search
+  var regex = req.query.search ? new RegExp(req.query.search, "i") : null ;
+  var query = regex ? { $or: [ {name: {$regex: regex}}, {description: {$regex: regex }} ] } : {} ;
+
+  Gift.find(query).select("_id").exec(function (err, gifts){
     if (err) res.status(400).json({message : err})
-    res.status(200).json({lists : lists});
+
+    if (gifts.length > 0) {
+      var giftsId = [];
+      gifts.forEach(function(gift){ giftsId.push(gift._id); });
+
+      List.find({gift: {$in: giftsId}, user: currentUser}).populate("gift").exec(function (err, lists){
+        if (err) res.status(400).json({message : err})
+        res.status(200).json(lists);
+      })
+    } else {
+      res.status(200).json(gifts);
+    }
   })
 });
 
@@ -112,7 +132,6 @@ router.post('/api/mylist', authenticatedUser, function(req, res){
 
   var listParams = req.body.list;
   listParams.user = req.user._id;
-  listParams.gift = req.params.id;
 
   List.create(listParams, function(err, list){
     if (err) res.status(400).json({message : err})

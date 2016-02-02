@@ -27,7 +27,7 @@ router.get('/signin', function (req, res, next) {
 // SIGN-IN: Authenticate the user
 router.post("/signin", function (req, res, next) {
   passport.authenticate('local-signin', {
-    successRedirect: '/',
+    successRedirect: '/gifts',
     failureRedirect: '/signin',
     failureFlash: true })(req, res, next);
 });
@@ -40,6 +40,6 @@ router.get("/signout", function (req, res, next){
 router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'} ));
 
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/',
-  failureRedirect: '/'
+  successRedirect: '/gifts',
+  failureRedirect: '/signup'
 }));
